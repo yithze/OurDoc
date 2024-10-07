@@ -29,7 +29,7 @@
                             </svg>
                         </button>
                     </div>
-                    <x-card-description>Lorem ipsum dolor sit amet consectetur adipisicing.</x-card-description>
+                    <x-card-description>Create Custom Field</x-card-description>
                 </x-card>
 
                 <!-- Kartu 2 -->
@@ -50,7 +50,7 @@
                             </svg>
                         </button>
                     </div>
-                    <x-card-description>Lorem ipsum dolor sit amet consectetur adipisicing.</x-card-description>
+                    <x-card-description>Create Entry Data</x-card-description>
                 </x-card>
 
                 <!-- Kartu 3 -->
@@ -71,7 +71,7 @@
                             </svg>
                         </button>
                     </div>
-                    <x-card-description>Lorem ipsum dolor sit amet consectetur adipisicing.</x-card-description>
+                    <x-card-description>Create Doc Approval.</x-card-description>
                 </x-card>
                 <!-- Kartu 4 -->
                 <x-card onclick="window.location='{{ route('folder') }}'" class="cursor-pointer">
@@ -91,7 +91,7 @@
                             <!-- </svg> -->
                         </button>
                     </div>
-                    <x-card-description>Lorem ipsum dolor sit amet consectetur adipisicing.</x-card-description>
+                    <x-card-description>Manage your Folder List</x-card-description>
                 </x-card>
                 <!-- Kartu 5 -->
                 <x-card onclick="window.location='{{ route('search') }}'" class="cursor-pointer">
@@ -111,7 +111,7 @@
                             <!-- </svg> -->
                         </button>
                     </div>
-                    <x-card-description>Lorem ipsum dolor sit amet consectetur adipisicing.</x-card-description>
+                    <x-card-description>Search Your Document </x-card-description>
                 </x-card>
 
             </div>
