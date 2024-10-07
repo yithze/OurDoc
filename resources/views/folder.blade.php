@@ -1,5 +1,5 @@
 <x-app-layout>
-    @slot('title', 'Dashboard')
+    @slot('title', 'Folders')
 
     <x-slot name="header">
         <h2 class="font-semibold text-l text-gray-800 leading-tight">

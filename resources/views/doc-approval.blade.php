@@ -1,5 +1,5 @@
 <x-app-layout>
-    @slot('title', 'Custom Field')
+    @slot('title', 'Doc Approval')
         @if (session('success'))
     <script>
         alert("{{ session('success') }}");

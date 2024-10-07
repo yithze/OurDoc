@@ -1,5 +1,5 @@
 <x-app-layout>
-    @slot('title', 'Dashboard')
+    @slot('title', 'Search')
     @if (session('success'))
     <script>
         alert("{{ session('success') }}");
