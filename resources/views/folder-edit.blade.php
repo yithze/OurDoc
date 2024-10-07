@@ -50,12 +50,12 @@
                                 class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required />
                         </div>
 
-                    </form>
-
-                    <div class="flex items-center gap-4 mt-4">
                         <button type="submit" class="bg-black text-white font-bold py-2 px-4 rounded">
                             Update
                         </button>
+                    </form>
+
+                    <div class="flex items-center gap-4 mt-4">
                         <!-- Delete Button -->
                         <form action="{{ route('folder.destroy', $folder->id) }}" method="POST">
                             @csrf
