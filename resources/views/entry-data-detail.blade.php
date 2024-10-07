@@ -108,22 +108,21 @@
                         <button type="submit" class="bg-black text-white font-bold py-2 px-4 rounded">
                             Save
                         </button>
-                        <form action="{{ route('entry-data.destroy', $entry->id) }}" method="POST"
-                            onsubmit="return confirm('Are you sure you want to delete this entry?');">
-                            @csrf
-                            @method('DELETE') <!-- Method untuk delete -->
-                            <button type="submit" id="delete-button"
-                                class="bg-red-600 text-white font-bold py-2 px-4 rounded"
-                                onclick="return confirm('Are you sure you want to delete this doc?');">
-                                Delete
-                            </button>
-                        </form>
 
 
-                    </div>
+                </form>
+                <form action="{{ route('entry-data.destroy', $entry->id) }}" method="POST"
+                    onsubmit="return confirm('Are you sure you want to delete this entry?');">
+                    @csrf
+                    @method('DELETE') <!-- Method untuk delete -->
+                    <button type="submit" id="delete-button" class="bg-red-600 text-white font-bold py-2 px-4 rounded"
+                        onclick="return confirm('Are you sure you want to delete this doc?');">
+                        Delete
+                    </button>
                 </form>
             </div>
         </div>
+    </div>
     </div>
 
     <style>

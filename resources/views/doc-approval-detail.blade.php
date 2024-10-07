@@ -140,9 +140,9 @@
                             class="mt-2 bg-gray-600 text-white font-bold py-2 px-4 rounded">Add Approval</button>
                     </div>
 
-                </form>
                 <div class="flex items-center gap-4 mt-6">
                     <button type="submit" class="bg-black text-white font-bold py-2 px-4 rounded">Save</button>
+                </form>
                     <form method="POST" action="{{ route('doc-approval.destroy', $docApproval->id) }}">
                         @csrf
                         @method('DELETE')
