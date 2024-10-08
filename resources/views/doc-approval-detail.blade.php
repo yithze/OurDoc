@@ -140,64 +140,84 @@
                             class="mt-2 bg-gray-600 text-white font-bold py-2 px-4 rounded">Add Approval</button>
                     </div>
 
-                <div class="flex items-center gap-4 mt-6">
-                    <button type="submit" class="bg-black text-white font-bold py-2 px-4 rounded">Save</button>
+                    <div class="flex items-center gap-4 mt-6">
+                        <button type="submit" class="bg-black text-white font-bold py-2 px-4 rounded">Save</button>
                 </form>
-                    <form method="POST" action="{{ route('doc-approval.destroy', $docApproval->id) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="bg-red-600 text-white font-bold py-2 px-4 rounded"
-                            onclick="return confirm('Are you sure you want to delete this document?');">Delete</button>
-                    </form>
-                </div>
+                <form method="POST" action="{{ route('doc-approval.destroy', $docApproval->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-red-600 text-white font-bold py-2 px-4 rounded"
+                        onclick="return confirm('Are you sure you want to delete this document?');">Delete</button>
+                </form>
             </div>
         </div>
     </div>
+    </div>
 </x-app-layout>
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        let approvalCount = {{count($docApproval -> approvals)
-    }}; // Counter for approval rows
+        let approvalCount = {{ count($docApproval->approvals) }}; // Counter for approval rows
 
-    // Function to add a new approval row
-    function addApprovalRow() {
-        const approvalsContainer = document.getElementById('approvals-container');
-        const newRow = document.createElement('div');
-        newRow.classList.add('approval-row', 'flex', 'gap-4', 'mb-4');
-        newRow.innerHTML = `
-                <div>
-                    <label for="approval_title" class="block font-medium text-sm text-gray-700">Approval Title</label>
-                    <input name="approvals[${approvalCount}][approval_title]" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required />
-                </div>
-                <div>
-                    <label for="approval_by" class="block font-medium text-sm text-gray-700">Approval By</label>
-                    <input name="approvals[${approvalCount}][approval_by]" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required />
-                </div>
-                <div>
-                    <label for="approval_date" class="block font-medium text-sm text-gray-700">Approval Date</label>
-                    <input name="approvals[${approvalCount}][approval_date]" type="date" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required />
-                </div>
-                <button type="button" class="remove-row text-red-500">Remove</button>
-            `;
-        approvalsContainer.appendChild(newRow);
-        approvalCount++;
+        // Function to add a new approval row
+        function addApprovalRow() {
+            const approvalsContainer = document.getElementById('approvals-container');
+            const newRow = document.createElement('div');
+            newRow.classList.add('approval-row', 'flex', 'gap-4', 'mb-4');
+            newRow.innerHTML = `
+                    <div>
+                        <label for="approval_title" class="block font-medium text-sm text-gray-700">Approval Title</label>
+                        <input name="approvals[${approvalCount}][approval_title]" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required />
+                    </div>
+                    <div>
+                        <label for="approval_by" class="block font-medium text-sm text-gray-700">Approval By</label>
+                        <input name="approvals[${approvalCount}][approval_by]" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required />
+                    </div>
+                    <div>
+                        <label for="approval_date" class="block font-medium text-sm text-gray-700">Approval Date</label>
+                        <input name="approvals[${approvalCount}][approval_date]" type="date" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required />
+                    </div>
+                    <button type="button" class="remove-row text-red-500">Remove</button>
+                `;
+            approvalsContainer.appendChild(newRow);
+            approvalCount++;
 
-        // Add event listener for the remove button
-        newRow.querySelector('.remove-row').addEventListener('click', function () {
-            newRow.remove();
+            // Add event listener for the new remove button
+            newRow.querySelector('.remove-row').addEventListener('click', function () {
+                newRow.remove();
+                updateRemoveButtons();
+            });
+
+            updateRemoveButtons(); // Update buttons state
+        }
+
+        // Add approval row on button click
+        document.getElementById('add-approval').addEventListener('click', addApprovalRow);
+
+        // Update remove buttons state
+        function updateRemoveButtons() {
+            const rows = document.querySelectorAll('.approval-row');
+            const removeButtons = document.querySelectorAll('.remove-row');
+            removeButtons.forEach(button => {
+                if (rows.length === 1) {
+                    button.disabled = true;
+                    button.classList.add('opacity-50', 'cursor-not-allowed');
+                } else {
+                    button.disabled = false;
+                    button.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            });
+        }
+
+        // Initial call to updateRemoveButtons after page load
+        updateRemoveButtons();
+
+        // Add event listener for existing remove buttons (if any)
+        document.querySelectorAll('.remove-row').forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.target.closest('.approval-row').remove();
+                updateRemoveButtons();
+            });
         });
-    }
-
-    // Add approval row on button click
-    document.getElementById('add-approval').addEventListener('click', addApprovalRow);
-
-    // Add event listener for the remove buttons
-    document.querySelectorAll('.remove-row').forEach(button => {
-        button.addEventListener('click', function (e) {
-            e.target.closest('.approval-row').remove();
-        });
-    });
     });
 
     function previewFile() {
@@ -242,3 +262,5 @@
         }
     }
 </script>
+
+

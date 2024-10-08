@@ -7,7 +7,6 @@
     </script>
     @endif
 
-
     <x-slot name="header">
         <h2 class="font-semibold text-l text-gray-800 leading-tight">
             <a href="{{ route('dashboard') }}" class="text-gray-500 mr-3">Dashboard</a>
@@ -128,7 +127,10 @@
 
             // Add event listener for the remove button
             newRow.querySelector('.remove-row').addEventListener('click', function () {
-                newRow.remove();
+                if (approvalCount > 1) {
+                    newRow.remove();
+                    approvalCount--;
+                }
             });
         }
 
@@ -138,7 +140,10 @@
         // Add event listener for the first remove button
         document.querySelectorAll('.remove-row').forEach(button => {
             button.addEventListener('click', function (e) {
-                e.target.closest('.approval-row').remove();
+                if (approvalCount > 1) {
+                    e.target.closest('.approval-row').remove();
+                    approvalCount--;
+                }
             });
         });
     });
@@ -167,22 +172,13 @@
                     embed.src = e.target.result;
                     embed.type = 'application/pdf';
                     embed.width = '100%';
-                    embed.height = '600px';
+                    embed.height = '500px';
                     preview.appendChild(embed);
-                } else {
-                    preview.textContent = 'File type not supported for preview';
                 }
 
+                // Update the upload label text to show the file name
                 uploadText.textContent = file.name;
-                uploadIcon.classList.add('hidden');
-                const replaceButton = document.createElement('button');
-                // replaceButton.textContent = 'Replace';
-                // replaceButton.classList.add('bg-blue-500', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'mt-2');
-                replaceButton.type = 'button';
-                replaceButton.onclick = function () {
-                    fileInput.click();
-                };
-                uploadLabel.appendChild(replaceButton);
+                uploadIcon.style.display = 'none'; // Hide the icon after file selection
             };
             reader.readAsDataURL(file);
         }
