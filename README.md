@@ -1,6 +1,5 @@
-
-![screenshot_2024-10-09T18:54:27](https://github.com/user-attachments/assets/2e204675-f802-4438-af03-8bbd574fcd63)
-![screenshot_2024-10-09T18:51:27](https://github.com/user-attachments/assets/9d0a185a-cb65-4768-8b3b-adf1d55c00e5)
-![screenshot_2024-10-09T18:53:12](https://github.com/user-attachments/assets/3a50a0aa-644a-4f49-aa04-eb64cd846089)
-![screenshot_2024-10-09T18:54:01](https://github.com/user-attachments/assets/f80c9d72-d158-4ffd-94b6-30a7fdc06b96)
-
+![OurDoc-Dashboard](https://github.com/user-attachments/assets/ecb8a5bc-3cce-4605-a2a8-9bab4b61c54a)
+![OurDoc-File-List](https://github.com/user-attachments/assets/ac64a11c-0bda-4807-8f2a-175d47197d84)
+![OurDoc-Table-Editor](https://github.com/user-attachments/assets/d7d21284-9efd-451a-a577-312a1d889702)
+![OurDoc-Doc Approval](https://github.com/user-attachments/assets/4307e8ba-3a86-4e90-b4cd-f07cbae9dc0c)
+![OurDoc-Doc-Approval-View-Appval-List-And-View-Document](https://github.com/user-attachments/assets/8e1eee44-e4df-4fc2-bf66-e5b461aa422b)
